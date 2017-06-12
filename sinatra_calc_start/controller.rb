@@ -7,8 +7,9 @@ require_relative "models/calculator"
 
 get '/add/:number1/:number2' do
   calculator = Calculator.new(params["number1"].to_i, params["number2"].to_i)
-  return "#{calculator.add()}"
-end
+  @calculation = calculator.add()
+  erb(:result)#note: erb takes in syimble and looks for a erb file by the name of :result.
+end #note: erb in rb file expexts :syimboles.
 
 get '/subtract/:number1/:number2' do
   calculator = Calculator.new(params["number1"].to_i, params["number2"].to_i)
